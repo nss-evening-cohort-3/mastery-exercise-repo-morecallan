@@ -26,22 +26,22 @@ namespace RepoQuiz.DAL
             return Context.Students.ToList();
         }
 
-        public Student CheckIfStudentIsInDatabaseByName(string name)
+        public Student CheckIfStudentIsInDatabaseByName(string firstname, string lastname, string major)
         {
-            Student found_student = Context.Students.FirstOrDefault(a => a.FirstName.ToLower() == name.ToLower());
+            Student found_student = Context.Students.FirstOrDefault(a => a.FirstName.ToLower() == firstname.ToLower() && a.LastName.ToLower() == lastname.ToLower() && a.Major.ToLower() == major.ToLower);
             return found_student;
         }
 
         public void AddOrUpdateStudent(Student student)
         {
-            if (CheckIfStudentIsInDatabaseByName(student.FirstName) == null)
+            if (CheckIfStudentIsInDatabaseByName(student.FirstName, student.LastName, student.Major) == null)
             {
                 Context.Students.Add(student);
                 Context.SaveChanges();
             }
             else
             {
-                Student existing_student = CheckIfStudentIsInDatabaseByName(student.FirstName);
+                Student existing_student = CheckIfStudentIsInDatabaseByName(student.FirstName, student.LastName, student.Major);
                 Context.Entry(existing_student).CurrentValues.SetValues(student);
             }
             
