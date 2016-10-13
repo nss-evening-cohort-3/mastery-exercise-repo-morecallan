@@ -28,7 +28,7 @@ namespace RepoQuiz.DAL
 
         public Student CheckIfStudentIsInDatabaseByName(string firstname, string lastname, string major)
         {
-            Student found_student = Context.Students.FirstOrDefault(a => a.FirstName.ToLower() == firstname.ToLower() && a.LastName.ToLower() == lastname.ToLower() && a.Major.ToLower() == major.ToLower);
+            Student found_student = Context.Students.FirstOrDefault(a => a.FirstName.ToLower() == firstname.ToLower() && a.LastName.ToLower() == lastname.ToLower() && a.Major.ToLower() == major.ToLower());
             return found_student;
         }
 
