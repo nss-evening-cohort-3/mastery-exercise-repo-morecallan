@@ -32,10 +32,9 @@ namespace RepoQuiz.DAL
             return found_student;
         }
 
-        public void AddStudent(Student student)
+        public void AddOrUpdateStudent(Student student)
         {
-
-            Context.Students.Add(author);
+            Context.Students.AddOrUpdate(s => s.Name, student);
             Context.SaveChanges();
         }
 
