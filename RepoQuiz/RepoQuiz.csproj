@@ -132,6 +132,7 @@
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="DAL\NameGenerator.cs" />
     <Compile Include="DAL\StudentContext.cs" />
+    <Compile Include="DAL\StudentRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

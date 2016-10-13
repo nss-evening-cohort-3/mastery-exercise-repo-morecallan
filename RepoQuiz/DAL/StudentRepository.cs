@@ -13,7 +13,7 @@ namespace RepoQuiz.DAL
         public StudentRepository
 ()
         {
-            Context = new StudentRepository();
+            Context = new StudentContext();
         }
 
         public StudentRepository(StudentContext _context)
@@ -21,21 +21,30 @@ namespace RepoQuiz.DAL
             Context = _context;
         }
 
-        public List<Students> GetStudents()
+        public List<Student> GetStudents()
         {
-            return Context.Authors.ToList();
+            return Context.Students.ToList();
         }
 
         public Student CheckIfStudentIsInDatabaseByName(string name)
         {
-            Student found_student = Context.Students.FirstOrDefault(a => a.Name.toLower() == name.ToLower());
+            Student found_student = Context.Students.FirstOrDefault(a => a.FirstName.ToLower() == name.ToLower());
             return found_student;
         }
 
         public void AddOrUpdateStudent(Student student)
         {
-            Context.Students.AddOrUpdate(s => s.Name, student);
-            Context.SaveChanges();
+            if (CheckIfStudentIsInDatabaseByName(student.FirstName) == null)
+            {
+                Context.Students.Add(student);
+                Context.SaveChanges();
+            }
+            else
+            {
+                Student existing_student = CheckIfStudentIsInDatabaseByName(student.FirstName);
+                Context.Entry(existing_student).CurrentValues.SetValues(student);
+            }
+            
         }
 
         public void AddStudent(string first_name, string last_name, string major)
