@@ -53,6 +53,12 @@ namespace RepoQuiz.DAL
             Context.Students.Add(student);
             Context.SaveChanges();
         }
-       
+
+        public void AddStudent(Student student)
+        {
+            Context.Students.Add(student);
+            Context.SaveChanges();
+        }
+
     }
 }

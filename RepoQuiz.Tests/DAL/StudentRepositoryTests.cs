@@ -47,5 +47,48 @@ namespace RepoQuiz.Tests.DAL
         {
             repo = null; 
         }
+
+        [TestMethod]
+        public void StudentRepoOriginallyHasNoStudents()
+        {
+            //Arrange
+            List<Student> students_returned = repo.GetStudents();
+            //Act
+            int expected_student_count = 0;
+            int actual_student_count = students_returned.Count();
+            //Assert
+            Assert.AreEqual(expected_student_count, actual_student_count);
+        }
+
+        [TestMethod]
+        public void StudentRepoCanAddStudent()
+        {
+            //Arrange
+            repo.AddStudent("Callan", "Morrison", "Creative Writing");
+            List<Student> students_returned = repo.GetStudents();
+            //Act
+            int expected_student_count = 1;
+            int actual_student_count = students_returned.Count();
+            //Assert
+            Assert.AreEqual(expected_student_count, actual_student_count);
+        }
+
+        [TestMethod]
+        public void StudentRepoWillUpdateIfTheyAreNotUnique()
+        {
+
+            //Arrange
+            Student first_student = new Student { FirstName = "Callan", LastName = "Morrison", Major = "Creative Writing" };
+            Student not_unique_student = new Student { FirstName = "Callan", LastName = "Morrison", Major = "Creative Writing" };
+
+            repo.AddOrUpdateStudent(first_student);
+            repo.AddOrUpdateStudent(not_unique_student);
+            List<Student> students_returned = repo.GetStudents();
+            //Act
+            int expected_student_count = 1;
+            int actual_student_count = students_returned.Count();
+            //Assert
+            Assert.AreEqual(expected_student_count, actual_student_count);
+        }
     }
 }
