@@ -32,6 +32,7 @@ namespace RepoQuiz.DAL
             return found_student;
         }
 
+//TODO: Check with instructor on Mocking this
         public void AddOrUpdateStudent(Student student)
         {
             if (CheckIfStudentIsInDatabaseByName(student.FirstName, student.LastName, student.Major) == null)
@@ -60,5 +61,15 @@ namespace RepoQuiz.DAL
             Context.SaveChanges();
         }
 
+        public void AddWholeNewClassroomFullOfUniqueStudents(int class_size)
+        {
+            RandomRosterGenerator random_roster_generator = new RandomRosterGenerator();
+            List<Student> classroom = random_roster_generator.PublicClassRosterGenerator(class_size);
+            for (var i = 0; i < classroom.Count; i++)
+            {
+                Context.Students.Add(classroom[i]);
+                Context.SaveChanges();
+            }
+        }
     }
 }

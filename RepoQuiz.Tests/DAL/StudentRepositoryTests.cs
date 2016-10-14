@@ -74,20 +74,17 @@ namespace RepoQuiz.Tests.DAL
         }
 
         [TestMethod]
-        public void StudentRepoWillUpdateIfTheyAreNotUnique()
+        public void StudentRepoCanAddAnEntireClassroomOfUniqueStudents()
         {
 
             //Arrange
-            Student first_student = new Student { FirstName = "Callan", LastName = "Morrison", Major = "Creative Writing" };
-            Student not_unique_student = new Student { FirstName = "Callan", LastName = "Morrison", Major = "Creative Writing" };
-
-            repo.AddStudent(first_student);
-            repo.AddStudent(not_unique_student);
+            repo.AddWholeNewClassroomFullOfUniqueStudents(10);
             List<Student> students_returned = repo.GetStudents();
             //Act
-            int expected_student_count = 1;
+            int expected_student_count = 10;
             int actual_student_count = students_returned.Count();
             //Assert
+            Assert.AreEqual(expected_student_count, actual_student_count);
         }
     }
 }
