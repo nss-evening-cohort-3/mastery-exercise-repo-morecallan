@@ -141,6 +141,10 @@
     <Compile Include="Migrations\201610132327352_InitialCreate.Designer.cs">
       <DependentUpon>201610132327352_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610142337329_SeedMethod.cs" />
+    <Compile Include="Migrations\201610142337329_SeedMethod.Designer.cs">
+      <DependentUpon>201610142337329_SeedMethod.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -196,6 +200,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201610132327352_InitialCreate.resx">
       <DependentUpon>201610132327352_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610142337329_SeedMethod.resx">
+      <DependentUpon>201610142337329_SeedMethod.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
