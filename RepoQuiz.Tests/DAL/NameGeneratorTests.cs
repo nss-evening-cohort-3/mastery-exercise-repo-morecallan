@@ -6,5 +6,6 @@ namespace RepoQuiz.Tests.DAL
     [TestClass]
     public class NameGeneratorTests
     {
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RepoQuiz.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,5 +16,13 @@ namespace RepoQuiz.DAL
         public List<string> Last = new List<string>() { "Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller", "Wilson", "Moore", "Taylor", "Anderson", "Thomas", "Jackson", "White", "Harris", "Martin", "Thompson", "Garcia", "Martinez", "Robinson", "Clark" };
         public List<string> Majors = new List<string>() { "Business Administration", "Nursing", "Psychology", "Cosmetology", "Economics", "Culinary Arts", "Chemistry", "Pharmacy" };
 
+        public Student CreateNewRandomStudent()
+        {
+            Random rnd = new Random();
+            string first_name = First[rnd.Next(1, First.Count())];
+            string last_name = Last[rnd.Next(1, Last.Count())];
+            string major = Majors[rnd.Next(1, Majors.Count())];
+            return new Student { FirstName = first_name, LastName = last_name, Major = major };
+        }
     }
 }
