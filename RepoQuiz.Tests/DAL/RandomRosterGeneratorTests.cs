@@ -19,6 +19,7 @@ namespace RepoQuiz.Tests.DAL
             Assert.IsNotNull(random_roster_generator);
         }
 
+        [TestMethod]
         public void RandomRosterGeneratorWillReturnTrueIfStudentAlreadyExistsInList()
         {
             //Arrange
@@ -36,6 +37,7 @@ namespace RepoQuiz.Tests.DAL
             Assert.AreEqual(expected_result, actual_result);
         }
 
+        [TestMethod]
         public void RandomRosterGeneratorWillReturnFalseIfStudentIsUniqueToList()
         {
             //Arrange
@@ -53,5 +55,17 @@ namespace RepoQuiz.Tests.DAL
             Assert.AreEqual(expected_result, actual_result);
         }
 
+        [TestMethod]
+        public void RandomRosterGeneratorWillGenerateAListWithTheNumberOfStudentsYouDesire()
+        {
+            //Arrange
+            RandomRosterGenerator random_roster_generator = new RandomRosterGenerator();
+            List<Student> unique_new_classroom = random_roster_generator.PublicClassRosterGenerator(5);
+            //Act
+            int expected_result = 5;
+            int actual_result = unique_new_classroom.Count;
+            //Assert
+            Assert.AreEqual(expected_result, actual_result);
+        }
     }
 }
