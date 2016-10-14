@@ -131,6 +131,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="DAL\NameGenerator.cs" />
+    <Compile Include="DAL\RandomRosterGenerator.cs" />
     <Compile Include="DAL\StudentContext.cs" />
     <Compile Include="DAL\StudentRepository.cs" />
     <Compile Include="Global.asax.cs">
