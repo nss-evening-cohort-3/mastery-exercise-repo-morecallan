@@ -32,6 +32,12 @@ namespace RepoQuiz.DAL
             return found_student;
         }
 
+        public Student ReturnSingleStudentById(int id)
+        {
+            Student found_student = Context.Students.FirstOrDefault(a => a.StudentId == id);
+            return found_student;
+        }
+
 //TODO: Check with instructor on Mocking this
         public void AddOrUpdateStudent(Student student)
         {
