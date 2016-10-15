@@ -86,5 +86,32 @@ namespace RepoQuiz.Tests.DAL
             //Assert
             Assert.AreEqual(expected_student_count, actual_student_count);
         }
+
+        [TestMethod]
+        public void StudentRepoCanGetAllStudents()
+        {
+            //Arrange
+            repo.AddWholeNewClassroomFullOfUniqueStudents(40);
+            List<Student> students_returned = repo.GetStudents();
+            //Act
+            int expected_student_count = 40;
+            int actual_student_count = students_returned.Count();
+            //Assert
+            Assert.AreEqual(expected_student_count, actual_student_count);
+        }
+
+        [TestMethod]
+        public void CanReturnASpecificStudentById()
+        {
+            //Arrange
+            repo.AddWholeNewClassroomFullOfUniqueStudents(10);
+            repo.AddStudent(new Student { StudentId = 12, FirstName = "Marcus", LastName = "Fear", Major = "Chemistry" });
+            Student student_returned = repo.ReturnSingleStudentById(12);
+            //Act
+            string expected_student_firstname = "Marcus";
+            string actual_student_firstname = student_returned.FirstName;
+            //Assert
+            Assert.AreEqual(expected_student_firstname, actual_student_firstname);
+        }
     }
 }
